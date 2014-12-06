@@ -23,11 +23,20 @@ module Bitstamp
     def self.bitstamp_options(options={})
       if Bitstamp.configured?
         options[:key] = Bitstamp.key
-        options[:nonce] = (Time.now.to_f*10000).to_i.to_s
+        options[:nonce] = utc_microseconds.to_s
         options[:signature] = HMAC::SHA256.hexdigest(Bitstamp.secret, options[:nonce]+Bitstamp.client_id.to_s+options[:key]).upcase
       end
 
       options
     end
+
+    #
+    # The current time in microseconds from the UNIX Epoch in the UTC
+    #
+    def self.utc_microseconds
+      (Time.now.gmtime.to_f * 1_000_000).to_i
+    end
+    private_class_method :utc_microseconds
+
   end
 end
