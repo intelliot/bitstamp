@@ -2,8 +2,6 @@
 
 require 'rubygems'
 require 'bundler'
-require "bundler/gem_tasks"
-
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -16,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "bitstamp"
+  gem.name = "bitstamp-rbtc-arbitrage"
   gem.homepage = "http://github.com/kojnapp/bitstamp"
   gem.license = "MIT"
-  gem.summary = %Q{Bitstamp Ruby API}
+  gem.summary = %Q{Bitstamp Ruby API - forked for rbtc-arbitrage}
   gem.description = %Q{Ruby API for use with bitstamp.}
-  gem.email = "stygeo@gmail.com"
-  gem.authors = ["Jeffrey Wilcke"]
+  gem.email = "hstove@gmail.com"
+  gem.authors = ["Jeffrey Wilcke", "Hank Stoever"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

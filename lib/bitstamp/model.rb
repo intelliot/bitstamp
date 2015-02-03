@@ -2,12 +2,16 @@ module Bitstamp
   class Model
     attr_accessor :error, :message
 
-    include ActiveModel::Validations
-    include ActiveModel::Conversion
-    extend ActiveModel::Naming
+    if ActiveModel::VERSION::MAJOR <= 3
+      include ActiveModel::Validations
+      include ActiveModel::Conversion
+      extend ActiveModel::Naming
 
-    def initialize(attributes = {})
-      self.attributes = attributes
+      def initialize(attributes = {})
+        self.attributes = attributes
+      end
+    else
+      include ActiveModel::Model
     end
 
     # Set the attributes based on the given hash
